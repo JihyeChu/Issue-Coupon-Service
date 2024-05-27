@@ -42,19 +42,13 @@ jobs:
           echo "${{ secrets.APPLICATION_TEST_PROPERTIES }}" > ./application-test.properties
         shell: bash
 
-
       # gradle 실행 허가
       - name: Run chmod to make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: 어플리케이션 실행 테스트(테스트 코드X)
-        run: ./gradlew clean build --exclude-task test
-
       # Bulid Test
       - name: Build with Gradle
         run: ./gradlew build
-      #
-
 
       # PR conversation & Action에 몇 개의 테스트 중에 몇 개가 통과 되었는지
       # 어떤 테스트 파일에서 실패했는지 가르쳐 줌.
